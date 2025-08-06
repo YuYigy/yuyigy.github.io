@@ -19,6 +19,7 @@ export interface PostData {
 }
 
 export interface Post extends PostData {
+  content: string
   contentHtml: string
 }
 
@@ -100,6 +101,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       tags: data.tags || [],
       featured: data.featured || false,
       readingTime: calculateReadingTime(content),
+      content,
       contentHtml,
     }
   } catch (error) {

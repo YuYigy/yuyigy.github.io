@@ -50,7 +50,31 @@ module.exports = {
       maxWidth: {
         'reading': '80ch',
       },
+      typography: {
+        invert: {
+          css: {
+            '--tw-prose-body': '#E6F1FF',
+            '--tw-prose-headings': '#64FFDA',
+            '--tw-prose-lead': '#8892B0',
+            '--tw-prose-links': '#64FFDA',
+            '--tw-prose-bold': '#E6F1FF',
+            '--tw-prose-counters': '#8892B0',
+            '--tw-prose-bullets': '#8892B0',
+            '--tw-prose-hr': '#233554',
+            '--tw-prose-quotes': '#E6F1FF',
+            '--tw-prose-quote-borders': '#64FFDA',
+            '--tw-prose-captions': '#8892B0',
+            '--tw-prose-code': '#64FFDA',
+            '--tw-prose-pre-code': '#E6F1FF',
+            '--tw-prose-pre-bg': '#112240',
+            '--tw-prose-th-borders': '#233554',
+            '--tw-prose-td-borders': '#233554',
+            lineHeight: '1.8',
+            fontSize: '1.1rem',
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

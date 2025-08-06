@@ -17,10 +17,10 @@ featured: true
 
 ### 主要目标
 
-**随缘分享** - 分享一些学习或生活上的[I4]和[E10]
+**随缘分享** - 分享一些学习或生活上的<Spoiler placeholder="[I4]">IDEA</Spoiler>和<Spoiler placeholder="[E10]">EXPERIENCE</Spoiler>
 
 ## 结语
 
-希望我的博客能给你一点收获，或者放低点要求，给你的生活添点乐子。
+希望我的博客能给你带来一些收获，或者放低点要求，给你的生活添点乐子。
 
 ---

@@ -30,10 +30,10 @@ export default async function HomePage() {
               <span className="text-3xl">📝</span>
             </div>
             <h3 className="text-xl font-title font-semibold text-soft-white mb-2">
-              即将发布精彩内容
+              即将发布
             </h3>
             <p className="text-soft-white/60">
-              正在准备高质量的技术文章，敬请期待！
+              正在制作中...
             </p>
           </div>
         ) : (
@@ -80,7 +80,7 @@ export default async function HomePage() {
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>{post.readingTime} 分钟阅读</span>
+                            <span>{post.readingTime} 分钟前阅读</span>
                           </div>
                         )}
                       </div>

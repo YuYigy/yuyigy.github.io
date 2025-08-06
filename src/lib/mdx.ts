@@ -127,7 +127,7 @@ export async function getPostWithMDX(slug: string): Promise<Post | null> {
   try {
     const mdxSource = await serialize(post.content, {
       mdxOptions: {
-        rehypePlugins: rehypePlugins,
+        rehypePlugins: [],
       },
     })
 

@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/lib/mdx-components'
 import type { Metadata } from 'next'
 
 interface PostPageProps {
@@ -123,23 +125,18 @@ export default async function PostPage({ params }: PostPageProps) {
       </header>
 
       {/* Post Content */}
-      <div 
-        className="prose prose-invert prose-lg max-w-none
-          prose-headings:font-title prose-headings:text-soft-white
-          prose-h1:text-3xl prose-h1:text-gradient prose-h1:mb-6
-          prose-h2:text-2xl prose-h2:text-soft-white prose-h2:border-b prose-h2:border-slate-gray/30 prose-h2:pb-2
-          prose-h3:text-xl prose-h3:text-soft-white
-          prose-p:text-soft-white/90 prose-p:leading-relaxed
-          prose-a:text-cyber-cyan prose-a:no-underline hover:prose-a:text-soft-white prose-a:transition-colors
-          prose-strong:text-soft-white prose-strong:font-semibold
-          prose-code:text-cyber-cyan prose-code:bg-dark-slate prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-          prose-pre:bg-dark-slate prose-pre:border prose-pre:border-slate-gray/20
-          prose-blockquote:border-l-cyber-cyan prose-blockquote:bg-dark-slate/50 prose-blockquote:text-soft-white/80
-          prose-ul:text-soft-white/90 prose-ol:text-soft-white/90
-          prose-li:text-soft-white/90
-          prose-img:rounded-lg prose-img:shadow-lg"
-        dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-      />
+      <div className="prose prose-invert prose-lg max-w-none">
+        <MDXRemote
+          source={post.content}
+          components={mdxComponents}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [],
+              rehypePlugins: [],
+            },
+          }}
+        />
+      </div>
 
       {/* Post Footer */}
       <footer className="mt-16 pt-8 border-t border-slate-gray/20">

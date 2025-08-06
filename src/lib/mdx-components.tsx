@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { ReactNode } from 'react'
+import Spoiler from '@/components/Spoiler'
 
 interface MDXComponentsProps {
   [key: string]: any
@@ -112,4 +113,7 @@ export const mdxComponents: MDXComponentsProps = {
       {children}
     </td>
   ),
+
+  // 自定义 Spoiler 组件
+  Spoiler: Spoiler,
 }

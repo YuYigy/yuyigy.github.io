@@ -1,21 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 启用静态导出
+  // 启用静态导出模式
   output: 'export',
 
-  // 为静态托管添加尾部斜杠
+  // 推荐：确保所有链接都以斜杠结尾，以避免在GitHub Pages上出现路由问题
   trailingSlash: true,
 
-  // 禁用图片优化（静态导出需要）
+  // 如果你的项目中使用了next/image，需要配置这个加载器才能在静态导出后正常工作
   images: {
-    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './my-image-loader.js',
   },
-
-  // 基础路径配置（如果部署到子目录，取消注释并修改）
-  // basePath: '/your-repo-name',
-
-  // 资源前缀（如果使用 CDN，取消注释并修改）
-  // assetPrefix: 'https://your-cdn.com',
 }
 
 module.exports = nextConfig

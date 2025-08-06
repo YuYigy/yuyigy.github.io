@@ -74,7 +74,7 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
 
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-title font-bold text-gradient mb-6 leading-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-title font-bold text-gradient mb-6 leading-[1.4] py-1">
           {post.title}
         </h1>
 

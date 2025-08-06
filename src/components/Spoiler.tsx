@@ -1,31 +1,54 @@
-// src/components/Spoiler.tsx
+// src/components/Spoiler.tsx (V2 - 优化版)
 
 import React from 'react';
-import { cn } from '@/lib/utils'; // 引入我们之前讨论过的样式辅助函数
+import { cn } from '@/lib/utils';
 
-// 定义组件接收的参数类型
 interface SpoilerProps {
-  placeholder: string;      // 遮盖层上显示的文字，例如 "[I4]"
-  children: React.ReactNode; // 被遮盖的真实内容，例如 "IDEA"
-  className?: string;       // 允许传入额外的CSS类名
+  placeholder: string;
+  children: React.ReactNode;
+  className?: string;
 }
 
 export default function Spoiler({ placeholder, children, className }: SpoilerProps) {
   return (
-    // 'group' 是Tailwind CSS的一个技巧，让内部元素能响应外部容器的:hover状态
+    // 使用 inline-grid 布局，这是一个解决此问题的关键技巧
     <span
       className={cn(
-        'group relative cursor-pointer bg-slate-700 hover:bg-slate-800/50 text-white px-2 py-1 rounded-md transition-all duration-300 align-middle',
+        'group relative inline-grid place-items-center cursor-pointer align-middle transition-all duration-300',
         className
       )}
     >
-      {/* 遮盖层上显示的文字 */}
-      <span className="font-mono opacity-80 group-hover:opacity-0 transition-opacity duration-300">
-        {placeholder}
+      {/*
+        第一层：不可见的"占位"层。
+        它包含了真实内容，但完全透明。
+        它的唯一作用就是将整个容器的宽度撑开到最终需要的宽度。
+      */}
+      <span className="invisible col-start-1 row-start-1 font-semibold text-cyan-300 px-2 py-1">
+        {children}
       </span>
 
-      {/* 默认隐藏，鼠标悬停时显示的真实内容 */}
-      <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-semibold text-cyan-300">
+      {/*
+        第二层：遮盖层。
+        它也位于网格的同一个单元格中，默认可见。
+        鼠标悬停时，它会变得透明。
+      */}
+      <span
+        className="col-start-1 row-start-1 w-full h-full flex items-center justify-center
+                   bg-slate-700 group-hover:bg-slate-800/50 text-white rounded-md
+                   group-hover:opacity-0 transition-all duration-300"
+      >
+        <span className="font-mono opacity-80">{placeholder}</span>
+      </span>
+
+      {/*
+        第三层：真实内容层。
+        它也位于同一个单元格，默认透明。
+        鼠标悬停时，它会变得可见。
+      */}
+      <span
+        className="col-start-1 row-start-1 opacity-0 group-hover:opacity-100
+                   transition-opacity duration-300 font-semibold text-cyan-300"
+      >
         {children}
       </span>
     </span>

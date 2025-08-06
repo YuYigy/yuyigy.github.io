@@ -50,11 +50,11 @@ module.exports = {
       maxWidth: {
         'reading': '80ch',
       },
-      typography: {
+      typography: ({ theme }) => ({
         invert: {
           css: {
             '--tw-prose-body': '#E6F1FF',
-            '--tw-prose-headings': '#64FFDA',
+            '--tw-prose-headings': '#E6F1FF', // 改为纯白色，与正文一致
             '--tw-prose-lead': '#8892B0',
             '--tw-prose-links': '#64FFDA',
             '--tw-prose-bold': '#E6F1FF',
@@ -71,9 +71,16 @@ module.exports = {
             '--tw-prose-td-borders': '#233554',
             lineHeight: '1.8',
             fontSize: '1.1rem',
+            // 覆盖标题的渐变样式
+            'h1, h2, h3, h4, h5, h6': {
+              'background-image': 'none', // 移除背景渐变
+              '-webkit-background-clip': 'initial', // 重置文本裁剪
+              'background-clip': 'initial', // 重置文本裁剪
+              'color': 'inherit', // 让标题颜色继承父元素
+            },
           },
         },
-      },
+      }),
     },
   },
   plugins: [require('@tailwindcss/typography')],

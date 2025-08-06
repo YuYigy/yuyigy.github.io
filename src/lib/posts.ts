@@ -137,8 +137,8 @@ export async function getAllCategories(): Promise<string[]> {
   const allPosts = await getPosts()
   const categories = allPosts
     .map(post => post.category)
-    .filter(category => category && category.trim() !== '')
-  
+    .filter((category): category is string => category !== undefined && category.trim() !== '')
+
   return Array.from(new Set(categories))
 }
 

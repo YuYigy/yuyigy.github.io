@@ -16,23 +16,23 @@ const exo2 = Exo_2({
 })
 
 export const metadata: Metadata = {
-  title: 'Project Stardust - 探索代码与思想的边界',
-  description: '个人知识与洞见博客，分享技术文章、思考笔记和学习资源。',
-  keywords: ['技术博客', '前端开发', 'React', 'Next.js', 'TypeScript'],
+  title: 'YuYi_gy的个人博客 - 其实是杂物间',
+  description: '啥都往里塞，前提是想起来了/憨笑',
+  keywords: ['个人博客', '学习分享', '杂物间', '羊驼'],
   authors: [{ name: 'yuyigy' }],
   creator: 'yuyigy',
   openGraph: {
-    title: 'Project Stardust - 探索代码与思想的边界',
-    description: '个人知识与洞见博客，分享技术文章、思考笔记和学习资源。',
+    title: 'YuYi_gy的个人博客 - 其实是杂物间',
+    description: '啥都往里塞，前提是想起来了/憨笑',
     url: 'https://yuyigy.github.io',
-    siteName: 'Project Stardust',
+    siteName: 'YuYi_gy的个人博客',
     locale: 'zh_CN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Project Stardust - 探索代码与思想的边界',
-    description: '个人知识与洞见博客，分享技术文章、思考笔记和学习资源。',
+    title: 'YuYi_gy的个人博客 - 其实是杂物间',
+    description: '啥都往里塞，前提是想起来了/憨笑',
   },
   robots: {
     index: true,
@@ -63,7 +63,7 @@ export default function RootLayout({
           <footer className="bg-dark-slate border-t border-slate-gray/20 py-8">
             <div className="max-w-4xl mx-auto px-4 text-center">
               <p className="text-soft-white/60">
-                © {new Date().getFullYear()} Project Stardust. Made with ❤️ and Next.js
+                © {new Date().getFullYear()} YuYi_gy的个人博客. Made with ❤️ and 🦙
               </p>
             </div>
           </footer>

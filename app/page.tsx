@@ -10,11 +10,11 @@ export default async function HomePage() {
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-6xl font-title font-bold text-gradient mb-6">
-          探索代码与思想的边界
+          什么鬼？
         </h1>
         <p className="text-xl text-soft-white/80 max-w-2xl mx-auto leading-relaxed">
-          在这里，我分享技术洞见、编程思考和个人成长的点点滴滴。
-          让我们一起在代码的世界中寻找灵感与突破。
+          你怎么发现这里的？
+          逗我呢？
         </p>
       </div>
 

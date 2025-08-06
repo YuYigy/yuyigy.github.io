@@ -11,7 +11,7 @@ export default function Header() {
               <span className="text-space-blue font-title font-bold text-lg">Y</span>
             </div>
             <span className="font-title font-bold text-xl text-gradient">
-              Project Stardust
+              YuYi_gy的个人博客
             </span>
           </Link>
 

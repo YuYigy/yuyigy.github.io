@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://yuyigy.github.io/sitemap.xml
+
+# Disallow crawling of build artifacts
+Disallow: /_next/
+Disallow: /api/
+
+# Allow crawling of all content
+Allow: /posts/
+Allow: /categories/
+Allow: /resources/
+Allow: /about/

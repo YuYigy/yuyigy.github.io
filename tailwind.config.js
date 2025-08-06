@@ -54,7 +54,7 @@ module.exports = {
         invert: {
           css: {
             '--tw-prose-body': '#E6F1FF',
-            '--tw-prose-headings': '#E6F1FF', // 改为纯白色，与正文一致
+            '--tw-prose-headings': '#E6F1FF', // 纯白色，与正文一致
             '--tw-prose-lead': '#8892B0',
             '--tw-prose-links': '#64FFDA',
             '--tw-prose-bold': '#E6F1FF',
@@ -71,12 +71,24 @@ module.exports = {
             '--tw-prose-td-borders': '#233554',
             lineHeight: '1.8',
             fontSize: '1.1rem',
-            // 覆盖标题的渐变样式
+            // 强力覆盖标题样式 - 解决渐变色和字符截断问题
             'h1, h2, h3, h4, h5, h6': {
-              'background-image': 'none', // 移除背景渐变
-              '-webkit-background-clip': 'initial', // 重置文本裁剪
-              'background-clip': 'initial', // 重置文本裁剪
-              'color': 'inherit', // 让标题颜色继承父元素
+              'background': 'none !important', // 强制移除任何背景
+              'background-image': 'none !important', // 强制移除背景渐变
+              'background-clip': 'initial !important', // 重置背景裁剪
+              '-webkit-background-clip': 'initial !important', // 重置webkit背景裁剪
+              '-webkit-text-fill-color': 'inherit !important', // 重置webkit文字填充色
+              'color': '#E6F1FF !important', // 强制设置为纯白色
+              'line-height': '1.4 !important', // 更宽松的行高，防止字符截断
+              'overflow': 'visible !important', // 确保字符完全显示
+              'padding-top': '0.1em', // 轻微的上内边距，防止上部截断
+              'padding-bottom': '0.1em', // 轻微的下内边距，防止下伸部截断
+            },
+            // 特别针对h1的额外修复
+            'h1': {
+              'line-height': '1.3 !important', // h1使用更宽松的行高
+              'margin-top': '0.2em', // 额外的上边距
+              'margin-bottom': '0.8em', // 额外的下边距
             },
           },
         },

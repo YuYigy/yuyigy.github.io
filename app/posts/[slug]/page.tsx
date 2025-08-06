@@ -104,7 +104,7 @@ export default async function PostPage({ params }: PostPageProps) {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>{post.readingTime} 分钟阅读</span>
+              <span>{post.readingTime} 分钟前阅读</span>
             </div>
           )}
         </div>
@@ -143,7 +143,7 @@ export default async function PostPage({ params }: PostPageProps) {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
             <p className="text-soft-white/60 text-sm mb-2">
-              感谢阅读！如果这篇文章对你有帮助，欢迎分享给更多人。
+              感谢阅读！希望这篇文章能帮到你。
             </p>
           </div>
           

@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, Exo_2 } from 'next/font/google'
 import '@/styles/globals.css'
 import Header from '@/components/Header'
+import ParticlesComponent from '@/components/ParticlesComponent'
+import ClickEffectComponent from '@/components/ClickEffectComponent'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -64,12 +66,19 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className={`${inter.variable} ${exo2.variable}`}>
       <body className="bg-space-blue text-soft-white font-body min-h-screen">
-        <div className="min-h-screen flex flex-col">
+        {/* 动态星空背景 - 位于最底层 */}
+        <ParticlesComponent />
+
+        {/* 全局点击特效 */}
+        <ClickEffectComponent />
+
+        {/* 主要内容区域 - 使用相对定位和较高z-index确保在背景之上 */}
+        <div className="min-h-screen flex flex-col relative z-10">
           <Header />
           <main className="flex-1">
             {children}
           </main>
-          <footer className="bg-dark-slate border-t border-slate-gray/20 py-8">
+          <footer className="bg-dark-slate/80 backdrop-blur-sm border-t border-slate-gray/20 py-8">
             <div className="max-w-4xl mx-auto px-4 text-center">
               <p className="text-soft-white/60">
                 © {new Date().getFullYear()} YuYi_gy的个人博客. Made with ❤️ and 🦙

@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== 点击特效动画 ===== */
+
+/* 波纹特效样式 */
+.click-ripple {
+  border: 2px solid var(--ripple-color, #64FFDA);
+  background: transparent;
+  box-shadow:
+    0 0 10px var(--ripple-color, #64FFDA),
+    0 0 20px var(--ripple-color, #64FFDA),
+    0 0 30px var(--ripple-color, #64FFDA);
+}
+
+/* 波纹扩散动画 */
+@keyframes ripple-animation {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* 性能优化：启用硬件加速 */
+.click-ripple {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

@@ -7,38 +7,87 @@
 /* 波纹特效样式 */
 .click-ripple {
   border: 2px solid var(--ripple-color, #64FFDA);
-  background: transparent;
+  background: radial-gradient(
+    circle,
+    rgba(100, 255, 218, 0.1) 0%,
+    rgba(100, 255, 218, 0.05) 50%,
+    transparent 100%
+  );
   box-shadow:
     0 0 10px var(--ripple-color, #64FFDA),
     0 0 20px var(--ripple-color, #64FFDA),
-    0 0 30px var(--ripple-color, #64FFDA);
+    0 0 30px var(--ripple-color, #64FFDA),
+    inset 0 0 10px rgba(100, 255, 218, 0.2);
+  /* 性能优化：启用硬件加速 */
+  will-change: transform, opacity, width, height;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
-/* 波纹扩散动画 */
+/* 波纹扩散动画 - 优化版 */
 @keyframes ripple-animation {
   0% {
     width: 0px;
     height: 0px;
     opacity: 0.8;
-    transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    filter: blur(0px);
+  }
+  25% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.3) rotate(90deg);
+    filter: blur(0.5px);
   }
   50% {
     opacity: 0.4;
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -50%) scale(0.6) rotate(180deg);
+    filter: blur(1px);
+  }
+  75% {
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.8) rotate(270deg);
+    filter: blur(1.5px);
   }
   100% {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    filter: blur(2px);
   }
 }
 
-/* 性能优化：启用硬件加速 */
-.click-ripple {
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  perspective: 1000px;
+/* 响应式优化：在小屏幕上减小波纹大小 */
+@media (max-width: 768px) {
+  @keyframes ripple-animation {
+    100% {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+/* 减少动画对性能敏感用户的影响 */
+@media (prefers-reduced-motion: reduce) {
+  .click-ripple {
+    animation-duration: 0.3s !important;
+  }
+
+  @keyframes ripple-animation {
+    0% {
+      width: 0px;
+      height: 0px;
+      opacity: 0.6;
+      transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+      width: 60px;
+      height: 60px;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
 }
 
 @layer base {

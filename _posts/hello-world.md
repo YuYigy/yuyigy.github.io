@@ -1,5 +1,5 @@
 ---
-title: "亻尔女子 - 欢迎来到 YuYi_gy的个人博客"
+title: "你发现了什么？"
 description: "这是我的第一篇博客文章，应该不会是最后一篇。"
 date: "2025-08-07"
 category: "杂谈"
@@ -15,7 +15,7 @@ featured: true
 
 记录一下学习与生活。
 
-### 主要目标
+## 主要目标
 
 **随缘分享** - 分享一些学习或生活上的<Spoiler placeholder="[I4]">IDEA</Spoiler>和<Spoiler placeholder="[E10]">EXPERIENCE</Spoiler>
 

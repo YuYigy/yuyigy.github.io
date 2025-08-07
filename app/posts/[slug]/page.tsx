@@ -50,10 +50,10 @@ export default async function PostPage({ params }: PostPageProps) {
   return (
     <article className="max-w-4xl mx-auto px-4 py-16">
       {/* 半透明背景面板容器 */}
-      <div className="bg-dark-slate/60 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-slate-gray/20 shadow-2xl shadow-space-blue/20">
+      <div className="bg-slate-800/50 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-slate-gray/20 shadow-2xl shadow-space-blue/20">
         {/*
           CSS类详细解释:
-          - bg-dark-slate/60: 设置深石板色背景，60%不透明度，让更多动态背景透过，增强视觉层次
+          - bg-slate-800/50: 设置较浅的石板色背景，50%不透明度，最大化动态背景的可见性和沉浸感
           - backdrop-blur-md: 中等强度的毛玻璃效果，模糊背景粒子，提升质感和可读性
           - rounded-2xl: 大圆角设计，现代化的卡片风格，与整体设计语言一致
           - p-8 md:p-12: 响应式内边距，移动端32px，桌面端48px，确保内容有足够呼吸空间

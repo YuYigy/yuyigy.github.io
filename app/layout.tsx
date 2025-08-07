@@ -29,6 +29,15 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     type: 'website',
   },
+  icons: {
+    icon: '/favicon.ico', // 这是最主要的favicon
+    shortcut: '/favicon.ico', // 用于一些旧版浏览器
+    apple: '/apple-touch-icon.png', // 用于iOS设备保存到主屏幕
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/apple-touch-icon-precomposed.png',
+    },
+  },
   twitter: {
     card: 'summary_large_image',
     title: 'YuYi_gy的个人博客 - 其实是杂物间',

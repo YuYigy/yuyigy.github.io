@@ -49,6 +49,17 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-16">
+      {/* 半透明背景面板容器 */}
+      <div className="bg-dark-slate/80 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-slate-gray/20 shadow-2xl shadow-space-blue/20">
+        {/*
+          CSS类详细解释:
+          - bg-dark-slate/80: 设置深石板色背景，80%不透明度，既保持视觉层次又不完全遮挡背景
+          - backdrop-blur-md: 中等强度的毛玻璃效果，模糊背景粒子，提升质感和可读性
+          - rounded-2xl: 大圆角设计，现代化的卡片风格，与整体设计语言一致
+          - p-8 md:p-12: 响应式内边距，移动端32px，桌面端48px，确保内容有足够呼吸空间
+          - border border-slate-gray/20: 纤细的半透明边框，与页脚风格保持一致
+          - shadow-2xl shadow-space-blue/20: 大阴影配合品牌色调，增强浮动卡片效果
+        */}
       {/* Back Link */}
       <div className="mb-8">
         <Link
@@ -154,6 +165,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </div>
         </div>
       </footer>
+      </div> {/* 半透明背景面板容器结束 */}
     </article>
   )
 }

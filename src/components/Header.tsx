@@ -10,9 +10,6 @@ import { cn } from '@/lib/utils'; // 引入样式辅助函数
 const navLinks = [
   { name: '首页', href: '/' },
   { name: '关于', href: '/about' },
-  // 你可以在这里添加更多链接，例如：
-  // { name: '专栏', href: '/collections' },
-  { name: 'GitHub', href: 'https://github.com/yuyigy', target: '_blank' }, // 为外部链接添加target
 ];
 
 export default function Header() {

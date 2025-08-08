@@ -5,6 +5,9 @@ import { formatDate } from '@/lib/utils'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxComponents } from '@/lib/mdx-components'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
+
+const ViewCounter = dynamic(() => import('@/components/ViewCounter'), { ssr: false })
 
 interface PostPageProps {
   params: {
@@ -110,14 +113,12 @@ export default async function PostPage({ params }: PostPageProps) {
             </svg>
             <span>{formatDate(post.date)}</span>
           </div>
-          {post.readingTime && (
-            <div className="flex items-center space-x-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>{post.readingTime} 分钟前阅读</span>
-            </div>
-          )}
+          <div className="flex items-center space-x-2">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <ViewCounter slug={post.slug} />
+          </div>
         </div>
 
         {/* Tags */}

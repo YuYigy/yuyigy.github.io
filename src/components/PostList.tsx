@@ -6,6 +6,7 @@ import { Calendar, Clock, ArrowRight } from 'lucide-react'
 import { PostMeta } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import Tag from './ui/Tag'
+import ViewCounter from './ViewCounter'
 
 interface PostListProps {
   posts: PostMeta[]
@@ -101,7 +102,7 @@ export default function PostList({ posts, selectedCategory }: PostListProps) {
                       </div>
                       <div className="flex items-center space-x-1">
                         <Clock size={14} />
-                        <span>{post.readingTime} 分钟阅读</span>
+                        <ViewCounter slug={post.slug} />
                       </div>
                     </div>
                   </div>

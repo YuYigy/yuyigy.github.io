@@ -5,6 +5,7 @@ import { PostMeta } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import Card from './ui/Card'
 import Tag from './ui/Tag'
+import ViewCounter from './ViewCounter'
 
 interface PostCardProps {
   post: PostMeta
@@ -57,7 +58,7 @@ export default function PostCard({ post, featured = false }: PostCardProps) {
             </div>
             <div className="flex items-center space-x-1">
               <Clock size={14} />
-              <span>{post.readingTime} 分钟阅读</span>
+              <ViewCounter slug={post.slug} />
             </div>
           </div>
         </div>

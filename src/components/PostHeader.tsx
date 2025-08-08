@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Post } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import Tag from './ui/Tag'
+import ViewCounter from './ViewCounter'
 
 interface PostHeaderProps {
   post: Post
@@ -67,7 +68,8 @@ export default function PostHeader({ post }: PostHeaderProps) {
         </div>
         <div className="flex items-center space-x-2">
           <Clock size={18} />
-          <span>{post.readingTime} 分钟阅读</span>
+          {/* 阅读次数统计 */}
+          <ViewCounter slug={post.slug} />
         </div>
       </div>
 

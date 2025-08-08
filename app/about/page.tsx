@@ -4,17 +4,17 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: '关于我 - YuYi_gy的个人博客',
-  description: '了解更多关于我的故事、技能和经历。一个热爱编程和技术的开发者的成长历程。',
-  keywords: ['关于我', '个人简介', '开发者', '技能', '经历'],
+  description: '我是谁？',
+  keywords: ['关于我'],
   openGraph: {
     title: '关于我 - YuYi_gy的个人博客',
-    description: '了解更多关于我的故事、技能和经历。一个热爱编程和技术的开发者的成长历程。',
+    description: '我是谁？',
     type: 'profile',
   },
 }
 
-// 时间线数据
-const timelineData = [
+// 时间线数据（已注释，保留格式便于日后启用）
+/* const timelineData = [
   {
     year: '2020',
     title: '编程启蒙',
@@ -40,10 +40,10 @@ const timelineData = [
     title: '持续成长',
     description: '专注于代码质量和用户体验，不断学习新技术，分享技术心得。'
   }
-]
+ ] */
 
-// 技能数据
-const skillsData = [
+// 技能数据（已注释，保留格式便于日后启用）
+/* const skillsData = [
   {
     category: '编程语言',
     skills: ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++']
@@ -68,7 +68,7 @@ const skillsData = [
     category: '云服务',
     skills: ['AWS', 'Vercel', 'Netlify', 'GitHub Pages', 'Heroku']
   }
-]
+ ] */
 
 // 联系方式数据
 const contactData = [
@@ -119,19 +119,14 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="w-64 h-64 rounded-full bg-gradient-to-br from-cyber-cyan/20 to-soft-white/10 p-1 animate-glow">
                   <div className="w-full h-full rounded-full bg-dark-slate flex items-center justify-center overflow-hidden">
-                    {/* 头像占位符 - 您可以替换为实际的头像图片 */}
-                    <div className="w-48 h-48 rounded-full bg-gradient-to-br from-cyber-cyan/30 to-slate-gray/30 flex items-center justify-center">
-                      <span className="text-6xl font-title font-bold text-cyber-cyan">Y</span>
-                    </div>
-                    {/* 如果您有头像图片，可以使用以下代码替换上面的占位符：
                     <Image
-                      src="/images/avatar.jpg"
+                      src="/images/avatar.png"
                       alt="YuYi_gy的头像"
                       width={240}
                       height={240}
+                      priority
                       className="rounded-full object-cover"
                     />
-                    */}
                   </div>
                 </div>
               </div>
@@ -139,62 +134,62 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 模块二：时间线 Timeline Section */}
-        <section className="mb-20 animate-fade-up">
-          <h2 className="text-3xl font-title font-bold text-soft-white mb-12 text-center">
+        {/* 模块二：时间线 Timeline Section（已注释，保留结构） */}
+        {/* <section className="mb-20 animate-fade-up"> */}
+          <div className="text-3xl font-title font-bold text-soft-white mb-12 text-center">
             我的<span className="text-cyber-cyan">成长历程</span>
-          </h2>
+          </div>
           
           <div className="relative">
             {/* 时间线主线 */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyber-cyan to-slate-gray"></div>
             
             <div className="space-y-12">
-              {timelineData.map((item, index) => (
-                <div key={index} className="relative flex items-start">
+              {/** timelineData.map((item) => ( */}
+                <div key="timeline-placeholder" className="relative flex items-start">
                   {/* 时间线节点 */}
                   <div className="absolute left-6 w-4 h-4 bg-cyber-cyan rounded-full border-4 border-space-blue shadow-lg shadow-cyber-cyan/50"></div>
                   
                   {/* 内容卡片 */}
                   <div className="ml-20 bg-dark-slate/50 backdrop-blur-sm rounded-lg p-6 border border-slate-gray/20 hover:border-cyber-cyan/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyber-cyan/10">
                     <div className="flex items-center gap-4 mb-3">
-                      <span className="text-cyber-cyan font-title font-bold text-xl">{item.year}</span>
-                      <h3 className="text-soft-white font-semibold text-lg">{item.title}</h3>
+                      <span className="text-cyber-cyan font-title font-bold text-xl"></span>
+                      <h3 className="text-soft-white font-semibold text-lg"></h3>
                     </div>
-                    <p className="text-slate-gray leading-relaxed">{item.description}</p>
+                    <p className="text-slate-gray leading-relaxed"></p>
                   </div>
                 </div>
-              ))}
+              {/** )) */}
             </div>
           </div>
-        </section>
+        {/* </section> */}
 
-        {/* 模块三：技能树 Skills Section */}
-        <section className="mb-20 animate-fade-up">
+        {/* 模块三：技能树 Skills Section（已注释，保留结构） */}
+        {/* <section className="mb-20 animate-fade-up"> */}
           <h2 className="text-3xl font-title font-bold text-soft-white mb-12 text-center">
             技能<span className="text-cyber-cyan">树</span>
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillsData.map((category, index) => (
-              <div key={index} className="bg-dark-slate/50 backdrop-blur-sm rounded-lg p-6 border border-slate-gray/20 hover:border-cyber-cyan/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyber-cyan/10">
+            {/** skillsData.map((category, index) => ( */}
+              <div key="skills-placeholder" className="bg-dark-slate/50 backdrop-blur-sm rounded-lg p-6 border border-slate-gray/20 hover:border-cyber-cyan/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyber-cyan/10">
                 <h3 className="text-soft-white font-title font-semibold text-lg mb-4 text-center">
-                  {category.category}
+                  {/* {category.category} */}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
+                  {/** category.skills.map((skill, skillIndex) => ( */}
                     <span
-                      key={skillIndex}
+                      key="skill-placeholder"
                       className="px-3 py-1 bg-cyber-cyan/10 text-cyber-cyan rounded-full text-sm font-medium border border-cyber-cyan/20 hover:bg-cyber-cyan/20 transition-colors duration-200"
                     >
-                      {skill}
+                      {/* {skill} */}
                     </span>
-                  ))}
+                  {/** )) */}
                 </div>
               </div>
-            ))}
+            {/** )) */}
           </div>
-        </section>
+        {/* </section> */}
 
         {/* 模块四：联系方式 Contact Section */}
         <section className="animate-fade-up">

@@ -3,12 +3,9 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
 
-// 从环境变量中读取Supabase的URL和密钥
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-
-// 创建一个只在服务器端使用的Supabase客户端
-const supabase = createClient(supabaseUrl, supabaseKey);
+// 在 Vercel 上避免在构建阶段读取 env，改为运行时读取
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET(
   request: NextRequest,
@@ -17,6 +14,15 @@ export async function GET(
   const slug = params.slug;
 
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error('Missing Supabase envs: NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
+      return NextResponse.json({ error: 'Server env not configured' }, { status: 500 });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
     // 调用一个数据库函数 'increment_view_count'
     // 这个函数会原子性地增加计数值并返回最新值
     const { data, error } = await supabase.rpc('increment_view_count', {

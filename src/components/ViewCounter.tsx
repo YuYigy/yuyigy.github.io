@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react'
 interface ViewCounterProps {
   slug: string
   className?: string
+  increment?: boolean // 是否在挂载时自增（详情页开启，列表/首页关闭）
 }
 
-export default function ViewCounter({ slug, className }: ViewCounterProps) {
+export default function ViewCounter({ slug, className, increment = false }: ViewCounterProps) {
   const [count, setCount] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
 
@@ -17,10 +18,11 @@ export default function ViewCounter({ slug, className }: ViewCounterProps) {
 
     const fetchViews = async () => {
       try {
-        const res = await fetch(`/api/views/${encodeURIComponent(slug)}`, { cache: 'no-store' })
+        // increment=true 时使用 POST 自增并返回最新值；否则 GET 只读取
+        const method = increment ? 'POST' : 'GET'
+        const res = await fetch(`/api/views/${encodeURIComponent(slug)}`, { method, cache: 'no-store' })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         const data = await res.json()
-        // 兼容可能的数据结构
         const value =
           typeof data === 'number'
             ? data
@@ -35,7 +37,7 @@ export default function ViewCounter({ slug, className }: ViewCounterProps) {
     return () => {
       aborted = true
     }
-  }, [slug])
+  }, [slug, increment])
 
   if (error) {
     return <span className={className}>阅读次数：--</span>

@@ -105,7 +105,7 @@ export default function AboutPage() {
                 你好，我是 <span className="text-cyber-cyan">YuYi_gy</span>
               </h1>
               <p className="text-lg text-slate-gray leading-relaxed">
-                这里我的杂物间。
+                这里是我的杂物间。
               </p>
             </div>
             
@@ -190,7 +190,7 @@ export default function AboutPage() {
           
           <div className="bg-dark-slate/50 backdrop-blur-sm rounded-lg p-8 border border-slate-gray/20 text-center">
             <p className="text-slate-gray mb-8 text-lg">
-              如果您想与我交流技术话题，或者有任何合作机会，欢迎通过以下方式联系我：
+              联系方式：
             </p>
             
             <div className="flex justify-center gap-8">

@@ -104,14 +104,8 @@ export default function AboutPage() {
               <h1 className="text-4xl lg:text-5xl font-title font-bold text-soft-white mb-6">
                 你好，我是 <span className="text-cyber-cyan">YuYi_gy</span>
               </h1>
-              <p className="text-lg text-slate-gray leading-relaxed mb-8">
-                一个热爱编程和技术的全栈开发者。我喜欢探索新技术，解决复杂问题，
-                并通过代码创造有价值的产品。在这个数字化的世界里，我用代码编织梦想，
-                用技术连接未来。
-              </p>
-              <p className="text-slate-gray leading-relaxed">
-                除了编程，我还喜欢分享技术心得，记录学习过程。
-                这个博客就是我的数字花园，记录着我在技术路上的点点滴滴。
+              <p className="text-lg text-slate-gray leading-relaxed">
+                这里我的杂物间。
               </p>
             </div>
             

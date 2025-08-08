@@ -1,33 +1,18 @@
-# .github/workflows/deploy.yml
-
-name: Deploy Next.js site to Pages
+name: CI
 
 on:
-  # 当代码推送到 main 分支时触发
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
-  # 允许你手动在 Actions 标签页运行此工作流
-  workflow_dispatch:
-
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# 只允许一个并发部署，跳过在进行中的运行之间排队的运行。
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
-  # 构建任务
-  build:
+  quality-checks:
+    name: Lint and Type Check
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,25 +20,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: 'npm'
-      - name: Install Dependencies
-        run: npm ci # 使用 'ci' 更快更可靠
-      - name: Build with Next.js
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # 上传 Next.js 静态导出后生成的 'out' 目录
-          path: './out'
-
-  # 部署任务
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Type check
+        run: npx tsc --noEmit

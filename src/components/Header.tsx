@@ -17,7 +17,6 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { name: '首页', href: '/' },
   { name: '关于', href: '/about' },
-  { name: 'GitHub', href: 'https://github.com/YuYigy', target: '_blank' },
 ];
 
 export default function Header() {
@@ -72,7 +71,7 @@ export default function Header() {
                     rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
                     className={cn(
                       "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                      pathname === link.href
+                      pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href + '/'))
                         ? "text-cyber-cyan bg-cyber-cyan/10"
                         : "text-slate-300 hover:text-white hover:bg-white/10"
                     )}
@@ -124,7 +123,7 @@ export default function Header() {
                 rel={link.target === '_blank' ? 'noopener noreferrer' : undefined}
                 className={cn(
                   "block px-3 py-2 rounded-md text-base font-medium transition-colors",
-                  pathname === link.href
+                  pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href + '/'))
                     ? "text-cyber-cyan bg-cyber-cyan/10"
                     : "text-slate-300 hover:text-white hover:bg-white/10"
                 )}

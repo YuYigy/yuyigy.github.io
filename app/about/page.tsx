@@ -94,7 +94,7 @@ const contactData = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-space-blue">
+    <div className="min-h-screen">
       <div className="max-w-6xl mx-auto px-4 py-16">
         
         {/* 模块一：个人简介 Hero Section */}

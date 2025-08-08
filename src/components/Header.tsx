@@ -6,10 +6,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // 用于获取当前路径，高亮活动链接
 import { cn } from '@/lib/utils'; // 引入样式辅助函数
 
-// 1. 将导航链接数据提取出来，便于管理
-const navLinks = [
+// 1. 定义导航链接的类型接口
+interface NavLink {
+  name: string;
+  href: string;
+  target?: string; // 可选的target属性，用于控制链接打开方式
+}
+
+// 2. 将导航链接数据提取出来，便于管理
+const navLinks: NavLink[] = [
   { name: '首页', href: '/' },
   { name: '关于', href: '/about' },
+  { name: 'GitHub', href: 'https://github.com/YuYigy', target: '_blank' },
 ];
 
 export default function Header() {

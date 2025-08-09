@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 开始部署 Project Stardust...\n');
+console.log('🚀 开始部署 YuYi_gy\'s Blog...\n');
 
 try {
   // 检查是否有未提交的更改

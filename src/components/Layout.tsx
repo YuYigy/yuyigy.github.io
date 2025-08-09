@@ -15,12 +15,12 @@ interface LayoutProps {
 
 export default function Layout({
   children,
-  title = 'Project Stardust - 探索代码与思想的边界',
+  title = "YuYi_gy's Blog - 探索代码与思想的边界",
   description = '个人知识与洞见博客，分享技术文章、思考笔记和学习资源。',
   image = '/images/og-image.jpg',
   url = 'https://yuyigy.github.io',
 }: LayoutProps) {
-  const fullTitle = title.includes('Project Stardust') ? title : `${title} | Project Stardust`
+  const fullTitle = title.includes("YuYi_gy's Blog") ? title : `${title} | YuYi_gy's Blog`
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function Layout({
         <meta property="og:image" content={image} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Project Stardust" />
+        <meta property="og:site_name" content="YuYi_gy's Blog" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />

@@ -76,6 +76,7 @@ export default function PostContent({ content, rawContent }: PostContentProps) {
 
       return (
         <div className="my-8 rounded-lg overflow-hidden cursor-pointer group">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
             alt={alt}

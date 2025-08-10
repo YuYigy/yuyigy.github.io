@@ -99,7 +99,7 @@ export default function ResourceFilter({
           
           {searchTerm && (
             <div className="flex items-center space-x-2 px-3 py-1 bg-cyber-cyan/10 border border-cyber-cyan/20 rounded-lg">
-              <span className="text-sm text-cyber-cyan">搜索: "{searchTerm}"</span>
+              <span className="text-sm text-cyber-cyan">搜索: &quot;{searchTerm}&quot;</span>
               <button
                 onClick={() => onSearchChange('')}
                 className="text-cyber-cyan hover:text-soft-white transition-colors duration-300"

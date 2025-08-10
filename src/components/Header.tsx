@@ -24,11 +24,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // 3. (可选但推荐) 监听路由变化，在页面跳转时自动关闭菜单
+  // 3. 监听路由变化，在页面跳转时自动关闭菜单（不依赖 isMenuOpen，避免冗余依赖警告）
   useEffect(() => {
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    }
+    setIsMenuOpen(false);
   }, [pathname]);
 
   // 4. (可选但推荐) 当菜单打开时，禁止背景滚动，提升体验

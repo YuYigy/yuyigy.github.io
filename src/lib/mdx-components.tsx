@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import MDXImage from '@/components/MDXImage'
 import { ReactNode } from 'react'
 import Spoiler from '@/components/Spoiler'
 
@@ -8,17 +9,8 @@ interface MDXComponentsProps {
 
 export const mdxComponents: MDXComponentsProps = {
   // 自定义图片组件
-  img: ({ src, alt, ...props }: { src: string; alt: string }) => (
-    <div className="my-8 rounded-lg overflow-hidden">
-      <Image
-        src={src}
-        alt={alt}
-        width={800}
-        height={600}
-        className="w-full h-auto cursor-pointer hover:scale-105 transition-transform duration-300"
-        {...props}
-      />
-    </div>
+  img: ({ src, alt }: { src: string; alt: string }) => (
+    <MDXImage src={src} alt={alt} />
   ),
   
   // 自定义标题组件

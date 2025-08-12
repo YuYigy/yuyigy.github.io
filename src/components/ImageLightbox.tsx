@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { useRef } from 'react'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -70,7 +71,7 @@ export default function ImageLightbox({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-space-blue/95 backdrop-blur-sm"
+          className="absolute inset-0 bg-space-blue/80 backdrop-blur-md"
           onClick={onClose}
         />
 
@@ -83,14 +84,15 @@ export default function ImageLightbox({
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="relative"
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={images[currentIndex]}
               alt={`Image ${currentIndex + 1}`}
-              width={1200}
-              height={800}
               className="max-w-full max-h-[90vh] object-contain rounded-lg"
-              priority
             />
+
+            <div className="absolute inset-0 pointer-events-none" />
+
           </motion.div>
 
           {/* 关闭按钮 */}

@@ -72,7 +72,16 @@ export default function PostCard({ post, featured = false }: PostCardProps) {
               </Tag>
             ))}
             {post.tags.length > 3 && (
-              <Tag size="sm">+{post.tags.length - 3}</Tag>
+              <div className="relative group">
+                <Tag size="sm">+{post.tags.length - 3}</Tag>
+                <div className="absolute left-0 top-full mt-2 z-20 hidden group-hover:block bg-space-blue/95 border border-slate-gray/30 rounded-lg p-3 shadow-lg">
+                  <div className="flex flex-wrap gap-2 max-w-xs">
+                    {post.tags.slice(3).map((tag) => (
+                      <Tag key={tag} size="sm">{tag}</Tag>
+                    ))}
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         )}

@@ -98,8 +98,15 @@ export default async function HomePage() {
                             </span>
                           ))}
                           {post.tags.length > 3 && (
-                            <span className="inline-flex items-center px-2 py-1 rounded text-xs bg-slate-gray/20 text-slate-gray">
+                            <span className="relative group inline-flex items-center px-2 py-1 rounded text-xs bg-slate-gray/20 text-slate-gray">
                               +{post.tags.length - 3}
+                              <span className="absolute left-0 top-full mt-2 z-20 hidden group-hover:block bg-space-blue/95 border border-slate-gray/30 rounded-lg p-3 shadow-lg">
+                                <span className="flex flex-wrap gap-2 max-w-xs">
+                                  {post.tags.slice(3).map((tag) => (
+                                    <span key={tag} className="inline-flex items-center px-2 py-1 rounded text-xs bg-slate-gray/20 text-slate-gray">{tag}</span>
+                                  ))}
+                                </span>
+                              </span>
                             </span>
                           )}
                         </div>

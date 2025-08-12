@@ -5,6 +5,7 @@ import { PostMeta } from '@/lib/mdx'
 import { formatDate } from '@/lib/utils'
 import Card from './ui/Card'
 import Tag from './ui/Tag'
+import MoreTagsPopover from './MoreTagsPopover'
 import ViewCounter from './ViewCounter'
 
 interface PostCardProps {
@@ -65,24 +66,8 @@ export default function PostCard({ post, featured = false }: PostCardProps) {
 
         {/* 标签 */}
         {post.tags && post.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
-            {post.tags.slice(0, 3).map((tag) => (
-              <Tag key={tag} size="sm">
-                {tag}
-              </Tag>
-            ))}
-            {post.tags.length > 3 && (
-              <div className="relative group">
-                <Tag size="sm">+{post.tags.length - 3}</Tag>
-                <div className="absolute left-0 top-full mt-2 z-20 hidden group-hover:block bg-space-blue/95 border border-slate-gray/30 rounded-lg p-3 shadow-lg w-fit max-w-[80vw]">
-                  <div className="flex flex-wrap gap-2 max-w-xs">
-                    {post.tags.slice(3).map((tag) => (
-                      <Tag key={tag} size="sm">{tag}</Tag>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
+          <div className="mb-4">
+            <MoreTagsPopover tags={post.tags} size="sm" />
           </div>
         )}
 

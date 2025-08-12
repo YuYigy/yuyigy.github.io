@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import dynamic from 'next/dynamic'
+import MoreTagsPopover from '@/components/MoreTagsPopover'
 
 const ViewCounter = dynamic(() => import('@/components/ViewCounter'), { ssr: false })
 
@@ -88,27 +89,8 @@ export default async function HomePage() {
 
                       {/* Tags */}
                       {post.tags && post.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          {post.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="inline-flex items-center px-2 py-1 rounded text-xs bg-slate-gray/20 text-slate-gray"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {post.tags.length > 3 && (
-                            <span className="relative group inline-flex items-center px-2 py-1 rounded text-xs bg-slate-gray/20 text-slate-gray">
-                              +{post.tags.length - 3}
-                              <span className="absolute left-0 top-full mt-2 z-20 hidden group-hover:block bg-space-blue/95 border border-slate-gray/30 rounded-lg p-3 shadow-lg w-fit max-w-[80vw]">
-                                <span className="flex flex-wrap gap-2 max-w-xs">
-                                  {post.tags.slice(3).map((tag) => (
-                                    <span key={tag} className="inline-flex items-center px-2 py-1 rounded text-xs bg-slate-gray/20 text-slate-gray">{tag}</span>
-                                  ))}
-                                </span>
-                              </span>
-                            </span>
-                          )}
+                        <div className="mt-4">
+                          <MoreTagsPopover tags={post.tags} size="sm" />
                         </div>
                       )}
                     </div>

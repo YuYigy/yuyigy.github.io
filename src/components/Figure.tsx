@@ -1,7 +1,8 @@
 "use client"
 
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
+import LightboxImage from './LightboxImage'
 
 /** Utility: join class names safely */
 function cx(...parts: Array<string | undefined>) {
@@ -57,22 +58,38 @@ export interface FigureImageProps {
   alt: string
   /** 额外类名（可选） */
   className?: string
+  /** 是否启用点击放大预览（默认 true） */
+  lightbox?: boolean
 }
 
-export function FigureImage({ src, alt, className }: FigureImageProps) {
+export function FigureImage({ src, alt, className, lightbox = true }: FigureImageProps) {
+  const [open, setOpen] = useState(false)
   return (
     <div className={cx('mx-auto w-full', className)}>
       {/* 使用 unoptimized 以兼容外链图片与静态托管，无需额外域名配置 */}
-      <Image
-        src={src}
-        alt={alt}
-        unoptimized
-        width={1600}
-        height={900}
-        className="w-full h-auto rounded-lg shadow-lg"
-        sizes="(max-width: 768px) 100vw, 768px"
-        priority={false}
-      />
+      <div className={lightbox ? 'cursor-zoom-in' : undefined} onClick={lightbox ? () => setOpen(true) : undefined}>
+        <Image
+          src={src}
+          alt={alt}
+          unoptimized
+          width={1600}
+          height={900}
+          className="w-full h-auto rounded-lg shadow-lg"
+          sizes="(max-width: 768px) 100vw, 768px"
+          priority={false}
+        />
+      </div>
+
+      {lightbox && (
+        <LightboxImage
+          images={[src]}
+          currentIndex={0}
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          onNext={() => {}}
+          onPrev={() => {}}
+        />
+      )}
     </div>
   )
 }

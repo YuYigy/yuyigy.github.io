@@ -34,7 +34,7 @@ export const mdxComponents: MDXComponentsProps = {
   
   // 自定义段落
   p: ({ children }: { children: ReactNode }) => (
-    <p className="text-soft-white/90 leading-relaxed mb-4">
+    <p className="text-soft-white/90 leading-relaxed mb-3">
       {children}
     </p>
   ),
@@ -87,7 +87,7 @@ export const mdxComponents: MDXComponentsProps = {
   
   // 自定义表格
   table: ({ children }: { children: ReactNode }) => (
-    <div className="overflow-x-auto my-6">
+    <div className="overflow-x-auto my-4">
       <table className="w-full border-collapse border border-slate-gray/30">
         {children}
       </table>

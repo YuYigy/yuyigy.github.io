@@ -173,7 +173,7 @@ export default function LightboxImage({ src, alt = '' }: LightboxImageProps) {
   )
 
   return (
-    <div className="my-8 md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer">
+    <div className="mt-8 mb-2 md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer">
       {/* 缩略图 */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -187,11 +187,6 @@ export default function LightboxImage({ src, alt = '' }: LightboxImageProps) {
           setTranslate({ x: 0, y: 0 })
         }}
       />
-      {alt && (
-        <div className="text-center mt-2 text-sm text-soft-white/60">
-          <span>{alt}</span>
-        </div>
-      )}
 
       {isOpen && typeof window !== 'undefined' && createPortal(modal, document.body)}
     </div>

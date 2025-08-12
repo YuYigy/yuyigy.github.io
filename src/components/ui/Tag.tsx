@@ -14,7 +14,7 @@ export default function Tag({
   size = 'sm',
   className,
 }: TagProps) {
-  const baseStyles = 'inline-flex items-center font-medium rounded-full transition-colors duration-300'
+  const baseStyles = 'inline-flex items-center font-medium rounded-full transition-colors duration-300 whitespace-nowrap'
   
   const variants = {
     default: 'bg-slate-gray/20 text-slate-gray hover:bg-slate-gray/30',

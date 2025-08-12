@@ -4,6 +4,7 @@ import { getPostBySlug, getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { mdxComponents } from '@/lib/mdx-components'
+import remarkGfm from 'remark-gfm'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 
@@ -143,7 +144,7 @@ export default async function PostPage({ params }: PostPageProps) {
           components={mdxComponents}
           options={{
             mdxOptions: {
-              remarkPlugins: [],
+              remarkPlugins: [remarkGfm],
               rehypePlugins: [],
             },
           }}

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { X, ZoomIn, ZoomOut, Minimize2, Maximize2, RotateCcw, RotateCw } from 'lucide-react'
 
 interface LightboxImageProps {
   src: string
@@ -62,61 +64,112 @@ export default function LightboxImage({ src, alt = '' }: LightboxImageProps) {
   const endDrag = () => setDragging(false)
 
   const resetView = () => {
-    setScale(1)
+    setRotate(0)
+    setTranslate({ x: 0, y: 0 })
+  }
+
+  const [rotate, setRotate] = useState(0)
+  const [fitScale, setFitScale] = useState(1)
+  const [mode, setMode] = useState<'fit' | 'original'>('fit')
+
+  const onImageLoad: React.ReactEventHandler<HTMLImageElement> = (e) => {
+    const img = e.currentTarget
+    const vw = Math.max(window.innerWidth * 0.95, 1)
+    const vh = Math.max(window.innerHeight * 0.9, 1)
+    const fs = Math.min(vw / img.naturalWidth, vh / img.naturalHeight, 1)
+    setFitScale(fs)
+    setScale(fs)
+    setMode('fit')
+    setRotate(0)
+    setTranslate({ x: 0, y: 0 })
+  }
+
+  const zoomIn = () => setScale((s) => clamp(s * 1.2, 0.2, 8))
+  const zoomOut = () => setScale((s) => clamp(s / 1.2, 0.2, 8))
+  const toggleFitOriginal = () => {
+    if (mode === 'fit') {
+      setMode('original')
+      setScale(1)
+    } else {
+      setMode('fit')
+      setScale(fitScale)
+    }
     setTranslate({ x: 0, y: 0 })
   }
 
   const modal = (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label={alt || 'Image preview'}
-      className="fixed inset-0 z-[1000] flex items-center justify-center"
-    >
-      {/* 遮罩层（点击关闭） */}
-      <div
-        className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-200 ${
-          mounted ? 'opacity-100' : 'opacity-0'
-        }`}
-        onClick={() => setIsOpen(false)}
-      />
-
-      {/* 内容容器（阻止冒泡，不可点击关闭） */}
-      <div
-        className={`relative z-10 p-4 transition-all duration-200 ${
-          mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-        }`}
-        onClick={(e) => e.stopPropagation()}
-        onWheel={onWheel}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={endDrag}
-        onMouseLeave={endDrag}
+    <AnimatePresence>
+      <motion.div
+        role="dialog"
+        aria-modal="true"
+        aria-label={alt || 'Image preview'}
+        className="fixed inset-0 z-[1000]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
-        {/* 关闭按钮 */}
+        {/* 遮罩层（点击关闭） */}
+        <motion.div
+          className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsOpen(false)}
+        />
+
+        {/* 右上角关闭按钮（圆角正方形） */}
         <button
           type="button"
           aria-label="关闭"
           onClick={() => setIsOpen(false)}
-          className="absolute -top-2 -right-2 md:top-0 md:right-0 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white shadow-lg z-20"
+          className="fixed top-4 right-4 z-[1001] p-3 rounded-xl bg-black/60 text-white shadow-lg hover:bg-black/80 hover:scale-105 transition-all"
         >
-          ×
+          <X size={20} />
         </button>
 
-        {/* 图片（可缩放拖拽） */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={src}
-          alt={alt}
-          draggable={false}
-          className={`max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl ${
-            scale > 1 ? (dragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-zoom-in'
-          }`}
-          style={{ transform: `translate(${translate.x}px, ${translate.y}px) scale(${scale})`, transition: dragging ? 'none' : 'transform 120ms ease-out' }}
-          onDoubleClick={resetView}
-        />
-      </div>
-    </div>
+        {/* 底部工具栏 */}
+        <div className="pointer-events-auto fixed bottom-6 left-1/2 -translate-x-1/2 z-[1001]">
+          <div className="flex items-center gap-1 bg-black/50 backdrop-blur-md text-white rounded-xl px-2 py-1 shadow-lg">
+            <button className="p-2 rounded-md hover:bg-white/10 transition" onClick={zoomOut} aria-label="缩小"><ZoomOut size={18} /></button>
+            <button className="p-2 rounded-md hover:bg-white/10 transition" onClick={zoomIn} aria-label="放大"><ZoomIn size={18} /></button>
+            <button className="p-2 rounded-md hover:bg-white/10 transition" onClick={toggleFitOriginal} aria-label="尺寸切换">
+              {mode === 'fit' ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
+            </button>
+            <button className="p-2 rounded-md hover:bg-white/10 transition" onClick={() => setRotate((r) => r - 90)} aria-label="左旋"><RotateCcw size={18} /></button>
+            <button className="p-2 rounded-md hover:bg-white/10 transition" onClick={() => setRotate((r) => r + 90)} aria-label="右旋"><RotateCw size={18} /></button>
+          </div>
+        </div>
+
+        {/* 内容层（阻止冒泡，不可点击关闭） */}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center"
+          initial={{ scale: 0.98, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.98, opacity: 0 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          onClick={(e) => e.stopPropagation()}
+          onWheel={onWheel}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={endDrag}
+          onMouseLeave={endDrag}
+        >
+          {/* 图片（framer-motion 控制缩放/旋转/位移） */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <motion.img
+            src={src}
+            alt={alt}
+            draggable={false}
+            className={`${scale > 1 ? (dragging ? 'cursor-grabbing' : 'cursor-grab') : 'cursor-zoom-in'} rounded-lg shadow-2xl select-none`}
+            style={{ maxWidth: mode === 'fit' ? '95vw' : 'none', maxHeight: mode === 'fit' ? '90vh' : 'none' }}
+            onLoad={onImageLoad}
+            animate={{ scale, rotate, x: translate.x, y: translate.y }}
+            transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+            onDoubleClick={resetView}
+          />
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   )
 
   return (

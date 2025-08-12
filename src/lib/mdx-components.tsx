@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import MDXImage from '@/components/MDXImage'
+import LightboxImage from '@/components/LightboxImage'
 import { ReactNode } from 'react'
 import Spoiler from '@/components/Spoiler'
 
@@ -8,9 +8,9 @@ interface MDXComponentsProps {
 }
 
 export const mdxComponents: MDXComponentsProps = {
-  // 自定义图片组件
+  // 自定义图片组件（使用支持 Portal 的 LightboxImage，保持原样式）
   img: ({ src, alt }: { src: string; alt: string }) => (
-    <MDXImage src={src} alt={alt} />
+    <LightboxImage src={src} alt={alt} />
   ),
   
   // 自定义标题组件

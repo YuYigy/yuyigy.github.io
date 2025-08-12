@@ -15,13 +15,13 @@ featured: false
 
 ![RSoft1](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft1.png)
 
-<div align="center"><span style="color:#888;">图 1 全局设置界面</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 1 全局设置界面</span></div>
 
 ## 1.2 创建全局变量
 
 进入仿真界面后，首先点击左侧工具栏中**Edit Symbols**设置全局变量（如图2所示），之后根据需要设置全局变量的名称和值，方便后续仿真进行修改。具体创建方法为：先点击**New Symbol**创建新变量，输入名称和值后点击**Accept Symbol**确定创建。下表为后续仿真加入的全局变量：
 
-<div align="center"><span style="color:#888;">表 1 全局变量设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>表 1 全局变量设置</span></div>
 
 | **变量名**    | **值** | **物理意义**    |
 | ------------- | ------ | --------------- |
@@ -35,7 +35,7 @@ featured: false
 
 ![RSoft2](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft2.png)
 
-<div align="center"><span style="color:#888;">图 2 Edit Symbols页面</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 2 Edit Symbols页面</span></div>
 
 ## 1.3 绘制波导
 
@@ -43,7 +43,7 @@ featured: false
 
 ![RSoft3](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft3.png)
 
-<div align="center"><span style="color:#888;">图 3 Segment (In Plane)与绘制波导</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 3 Segment (In Plane)与绘制波导</span></div>
 
 右键红色波导弹出**Properties for Segment**对波导进行详细设置。
 
@@ -51,11 +51,11 @@ featured: false
 
 ![RSoft4](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft4.png)
 
-<div align="center"><span style="color:#888;">图 4 输入光纤设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 4 输入光纤设置</span></div>
 
 ![RSoft5](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft5.png)
 
-<div align="center"><span style="color:#888;">图 5 输出光纤设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 5 输出光纤设置</span></div>
 
 其中，栅区需要单独进行设置。首先点击上方**Edit/Tables/Edit User Tapers…**打开用户自定义Taper窗口，将**Source Type**选为*Grating*，将**Period**填上已经设置好的全局变量*Period*，并将**Profile Type**改为*Rectangular*，如果此处使用默认的*Sinusoidal*将无法在后续看到栅区折射率分布图 。点击**OK**保存*User Taper 1*的设置。
 
@@ -65,11 +65,11 @@ featured: false
 
 ![RSoft6](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft6.png)
 
-<div align="center"><span style="color:#888;">图 6 栅区设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 6 栅区设置</span></div>
 
 ![RSoft7](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft7.png)
 
-<div align="center"><span style="color:#888;">图 7 绘制波导图像</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 7 绘制波导图像</span></div>
 
 ## 1.4 观察栅区折射率分布
 
@@ -79,11 +79,11 @@ featured: false
 
 ![RSoft8](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft8.png)
 
-<div align="center"><span style="color:#888;">图 8 Display Material Profile页面</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 8 Display Material Profile页面</span></div>
 
 ![RSoft9](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft9.png)
 
-<div align="center"><span style="color:#888;">图 9 折射率分布图</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 9 折射率分布图</span></div>
 
 ## 1.5 定义Pathway和Monitor
 
@@ -91,13 +91,13 @@ featured: false
 
 ![RSoft10](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft10.png)
 
-<div align="center"><span style="color:#888;">图 10 Bidirectional Calculation选项设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 10 Bidirectional Calculation选项设置</span></div>
 
 然后点击左侧工具栏上的**Edit Pathways**，在出现的对话窗口上点击**New**按钮，依次点击三段波导变绿设置为Pathway（如图11所示）。
 
 ![RSoft11](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft11.png)
 
-<div align="center"><span style="color:#888;">图 11 设置波导为Pathway</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 11 设置波导为Pathway</span></div>
 
 然后点击左侧**Monitors…**，再点击两次**New**生成两个**Monitor**，第二个**Monitor**更改**Component**为*Major-Backward*，点击OK退出保存设置（如图12所示）。
 
@@ -105,7 +105,7 @@ featured: false
 
 ![RSoft12-2](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft12-2.png)
 
-<div align="center"><span style="color:#888;">图 12 Monitor设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 12 Monitor设置</span></div>
 
 ## 1.6 基础仿真
 
@@ -115,7 +115,7 @@ featured: false
 
 ![RSoft13](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft13.png)
 
-<div align="center"><span style="color:#888;">图 13 Perform Simulation设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 13 Perform Simulation设置</span></div>
 
 然后在**Output…**中修改**Composite** **Slice Format**为*None*，更改输出名称后点击**OK**进行仿真。
 
@@ -123,7 +123,7 @@ featured: false
 
 ![RSoft14](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft14.png)
 
-<div align="center"><span style="color:#888;">图 14 仿真正反传输能量变化</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 14 仿真正反传输能量变化</span></div>
 
 ## 1.7 获得光栅透射谱
 
@@ -131,17 +131,17 @@ featured: false
 
 ![RSoft15](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft15.png)
 
-<div align="center"><span style="color:#888;">图 15 Perform Parameter Scan设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 15 Perform Parameter Scan设置</span></div>
 
 等待一段时间后，在弹出的界面中点击**Open results in DataBROWSER**，即可查看仿真结果，如图16和图17所示。
 
 ![RSoft16](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft16.png)
 
-<div align="center"><span style="color:#888;">图 16 打开结果界面</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 16 打开结果界面</span></div>
 
 ![RSoft17](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft17.png)
 
-<div align="center"><span style="color:#888;">图 17 仿真结果-透射谱</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 17 仿真结果-透射谱</span></div>
 
 ## 1.8 通过GratingMOD获得反射功率谱
 
@@ -151,11 +151,11 @@ featured: false
 
 ![RSoft18-2](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft18-2.png)
 
-<div align="center"><span style="color:#888;">图 18 GratingMOD设置</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 18 GratingMOD设置</span></div>
 
 仿真结果如图19所示，其中**Peak****：0.911106@1.50515**代表在波长 **1.50515 μm** 处达到最大相对功率 **0.911106**（接近全反射）；**FWHM****：0.062771**代表半高全宽为**0.0627717 μm**。
 
 ![RSoft19](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft19.png)
 
-<div align="center"><span style="color:#888;">图 19 GratingMOD仿真结果（对照组）</span></div>
+<div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 19 GratingMOD仿真结果（对照组）</span></div>
 

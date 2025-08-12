@@ -71,12 +71,12 @@ export default function ImageLightbox({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-space-blue/80 backdrop-blur-md"
+          className="absolute inset-0 z-0 bg-space-blue/80 backdrop-blur-md"
           onClick={onClose}
         />
 
         {/* 图片容器 */}
-        <div className="relative z-10 max-w-7xl max-h-full mx-4">
+        <div className="relative z-10 w-screen h-screen flex items-center justify-center p-4">
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -88,11 +88,8 @@ export default function ImageLightbox({
             <img
               src={images[currentIndex]}
               alt={`Image ${currentIndex + 1}`}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+              className="max-w-[95vw] max-h-[90vh] object-contain rounded-lg"
             />
-
-            <div className="absolute inset-0 pointer-events-none" />
-
           </motion.div>
 
           {/* 关闭按钮 */}

@@ -153,7 +153,7 @@ featured: false
 
 <div style={{ textAlign: 'center' }}><span style={{ color: '#888' }}>图 18 GratingMOD设置</span></div>
 
-仿真结果如图19所示，其中**Peak****：0.911106@1.50515**代表在波长 **1.50515 μm** 处达到最大相对功率 **0.911106**（接近全反射）；**FWHM****：0.062771**代表半高全宽为**0.0627717 μm**。
+仿真结果如图19所示，其中**Peak：0.911106@1.50515**代表在波长 **1.50515 μm** 处达到最大相对功率 **0.911106**（接近全反射）；**FWHM：0.062771**代表半高全宽为**0.0627717 μm**。
 
 ![RSoft19](https://raw.githubusercontent.com/YuYigy/my-blog-images/main/img/RSoft19.png)
 

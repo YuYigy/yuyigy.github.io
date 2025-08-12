@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import LightboxImage from '@/components/LightboxImage'
+import { Figure, FigureImage } from '@/components/Figure'
 import { ReactNode } from 'react'
 import Spoiler from '@/components/Spoiler'
 
@@ -108,4 +109,8 @@ export const mdxComponents: MDXComponentsProps = {
 
   // 自定义 Spoiler 组件
   Spoiler: Spoiler,
+
+  // 图文容器组件（供 MDX 使用）
+  Figure,
+  FigureImage,
 }

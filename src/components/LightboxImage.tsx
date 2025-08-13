@@ -8,9 +8,13 @@ import { X, ZoomIn, ZoomOut, Minimize2, Maximize2, RotateCcw, RotateCw } from 'l
 interface LightboxImageProps {
   src: string
   alt?: string
+  /** 紧凑模式：用于在 Figure 等容器内渲染，去除外层边距和 1/2 宽度限制 */
+  compact?: boolean
+  /** 自定义外层容器类名 */
+  wrapperClassName?: string
 }
 
-export default function LightboxImage({ src, alt = '' }: LightboxImageProps) {
+export default function LightboxImage({ src, alt = '', compact = false, wrapperClassName }: LightboxImageProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [mounted, setMounted] = useState(false) // 用于过渡动画
   const [scale, setScale] = useState(1)
@@ -172,8 +176,10 @@ export default function LightboxImage({ src, alt = '' }: LightboxImageProps) {
     </AnimatePresence>
   )
 
+  const wrapperBase = compact ? 'w-full mx-auto rounded-lg overflow-hidden cursor-pointer' : 'mt-8 mb-2 md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer'
+
   return (
-    <div className="mt-8 mb-2 md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer">
+    <div className={`${wrapperBase} ${wrapperClassName ?? ''}`.trim()}>
       {/* 缩略图 */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

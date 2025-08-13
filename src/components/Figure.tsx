@@ -1,7 +1,6 @@
 "use client"
 
-import Image from 'next/image'
-import React, { useState } from 'react'
+import React from 'react'
 import LightboxImage from './LightboxImage'
 
 /** Utility: join class names safely */
@@ -63,33 +62,17 @@ export interface FigureImageProps {
 }
 
 export function FigureImage({ src, alt, className, lightbox = true }: FigureImageProps) {
-  const [open, setOpen] = useState(false)
+  if (lightbox) {
+    return (
+      <LightboxImage src={src} alt={alt} compact wrapperClassName={cx('mx-auto w-full', className)} />
+    )
+  }
+  // 非弹出模式下，直接使用 LightboxImage 的缩略图能力，但禁用点击（通过覆盖样式和不传 compact? No: LightboxImage 总是可点击）
+  // 这里改为直接渲染一个非交互的 <img> 以保持简单。
   return (
     <div className={cx('mx-auto w-full', className)}>
-      {/* 使用 unoptimized 以兼容外链图片与静态托管，无需额外域名配置 */}
-      <div className={lightbox ? 'cursor-zoom-in' : undefined} onClick={lightbox ? () => setOpen(true) : undefined}>
-        <Image
-          src={src}
-          alt={alt}
-          unoptimized
-          width={1600}
-          height={900}
-          className="w-full h-auto rounded-lg shadow-lg"
-          sizes="(max-width: 768px) 100vw, 768px"
-          priority={false}
-        />
-      </div>
-
-      {lightbox && (
-        <LightboxImage
-          images={[src]}
-          currentIndex={0}
-          isOpen={open}
-          onClose={() => setOpen(false)}
-          onNext={() => {}}
-          onPrev={() => {}}
-        />
-      )}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt} className="w-full h-auto rounded-lg shadow-lg" />
     </div>
   )
 }

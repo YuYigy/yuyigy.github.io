@@ -75,7 +75,7 @@ export const mdxComponents: MDXComponentsProps = {
   // 自定义引用块
   blockquote: ({ children }: { children: ReactNode }) => (
     <blockquote className="border-l-4 border-cyber-cyan bg-dark-slate/50 pl-6 pr-6 py-4 my-6 not-italic text-soft-white/40">
-      {children}
+      <div className="opacity-40">{children}</div>
     </blockquote>
   ),
   

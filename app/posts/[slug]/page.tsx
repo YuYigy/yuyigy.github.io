@@ -138,7 +138,7 @@ export default async function PostPage({ params }: PostPageProps) {
       </header>
 
       {/* Post Content */}
-      <div className="prose prose-invert prose-lg max-w-none">
+      <div className="prose prose-invert prose-lg max-w-none prose-justify">
         <MDXRemote
           source={post.content}
           components={mdxComponents}

@@ -176,7 +176,7 @@ export default function LightboxImage({ src, alt = '', compact = false, wrapperC
     </AnimatePresence>
   )
 
-  const wrapperBase = compact ? 'w-full mx-auto rounded-lg overflow-hidden cursor-pointer' : 'mt-8 mb-2 md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer'
+  const wrapperBase = compact ? 'md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer' : 'mt-8 mb-2 md:w-1/2 w-full mx-auto rounded-lg overflow-hidden cursor-pointer'
 
   return (
     <div className={`${wrapperBase} ${wrapperClassName ?? ''}`.trim()}>

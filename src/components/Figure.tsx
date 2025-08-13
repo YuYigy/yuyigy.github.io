@@ -29,7 +29,7 @@ export function Figure({ children, preCaption, postCaption, className }: FigureP
   return (
     <figure className={cx('my-8', className)}>
       {preCaption && (
-        <figcaption className="text-lg font-semibold text-gray-300 mb-4 text-center">
+        <figcaption className="not-prose text-sm text-gray-400 mb-3 text-center">
           {preCaption}
         </figcaption>
       )}
@@ -37,7 +37,7 @@ export function Figure({ children, preCaption, postCaption, className }: FigureP
       {children}
 
       {postCaption && (
-        <figcaption className="text-sm text-gray-400 mt-3 text-center">
+        <figcaption className="not-prose text-sm text-gray-400 mt-3 text-center">
           {postCaption}
         </figcaption>
       )}

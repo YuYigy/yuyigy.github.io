@@ -89,20 +89,20 @@ export const mdxComponents: MDXComponentsProps = {
   // 自定义表格
   table: ({ children }: { children: ReactNode }) => (
     <div className="overflow-x-auto my-4 md:w-1/2 w-full mx-auto">
-      <table className="w-full border-collapse border border-slate-gray/30">
+      <table className="w-full border-collapse border border-slate-gray/30 text-soft-white/90 text-[15px] leading-relaxed">
         {children}
       </table>
     </div>
   ),
   
   th: ({ children }: { children: ReactNode }) => (
-    <th className="border border-slate-gray/30 bg-dark-slate px-4 py-2 text-left font-semibold text-cyber-cyan">
+    <th className="border border-slate-gray/30 bg-dark-slate px-4 py-2 text-left font-semibold text-cyber-cyan text-[15px]">
       {children}
     </th>
   ),
   
   td: ({ children }: { children: ReactNode }) => (
-    <td className="border border-slate-gray/30 px-4 py-2 text-soft-white/90">
+    <td className="border border-slate-gray/30 px-4 py-2 text-soft-white/90 text-[15px]">
       {children}
     </td>
   ),
